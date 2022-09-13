@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Socket </title>
+    <style>
+        /* div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        } */
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="input content">
+    <button>Sumbit</button>
+    <div></div>
+    <script>
+        const TYPE = {
+            MSG: 2,
+            LEAVE: 1,
+            ENTER: 0
+        }
+        var input = document.querySelector('input')
+        var button = document.querySelector('button')
+        var div = document.querySelector('div')
+        //websocket在浏览器如何使用
+        //h5直接提供了websocket的api: https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API
+        //para 1: websocket 的服务地址
+        //1. 创建websocket
+        // var socket = new WebSocket('ws://echo.websocket.org:80/');
+        //2. open: 当wesocket服务链接成功时会触发
+        // socket.addEventListener('open', () => {
+        //     console.log('connect')
+        //     div.innerHTML = 'connected' //设置div中包括innerHTML
+        // })
+
+
+        var socket = new WebSocket('ws://localhost:3000');
+
+        socket.addEventListener('open', function open() {
+            console.log('connected');
+            div.innerHTML = 'connected' //设置div中包括innerHTML
+        // ws.send(Date.now().toString(), {mask: true});
+        });
+
+        button.addEventListener('click', ()=>{
+            var value = input.value;
+            socket.send(value);
+            input.value = '';
+        })
+
+        socket.addEventListener('message', (message)=>{
+            const data = JSON.parse(message.data)
+            const {type, time, msg, user} = data
+            console.log(data)
+            const p = document.createElement("p")
+            p.innerText = data.msg + '----' + data.time
+
+            if(data.type === TYPE.ENTER){
+                p.style.color = 'green';
+                p.innerText = `user${user} enters the chart room`
+            }
+            else if(type === TYPE.LEAVE){
+                p.style.color = 'red';
+                p.innerText = `user${user} leaves the chart room`
+            }
+            else{
+                p.innerText = `user${user}: ${msg}`
+            }
+            div.append(p);
+        })
+    </script>
+</body>
+</html>
