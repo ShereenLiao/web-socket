@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #ffa12c;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  max-width: 400px;
+  height: 500px;
+  background: #fff;
+  border-radius: 15px;
+}
+
+.btn-container{
+  display: flex;
+  align-items: center;
+  
+  justify-items: center;
+}
+
+.login {
+  width: 400px;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  width: 300px;
+  margin: 60px auto;
+}
+
+h1 {
+  margin: 20px;
+  text-align: center;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+hr {
+  border-top: 3px solid orange;
+}
+
+p {
+  text-align: center;
+  margin: 10px;
+  font-size: 13px;
+}
+
+form.label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5px;
+  margin-top: 8px;
+}
+
+input {
+  width: 100%;
+  margin: 2px;
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 9px;
+  border: 1px solid gray;
+}
+
+button {
+  border: none;
+  outline: none;
+  padding: 8px;
+  width: 60%;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin: auto;
+  border-radius: 8px;
+  background: orange;
+}
+
+.forget {
+  font-size: 12px;
+  margin-top: 16px;
+  text-align: right;
+}
+
+a {
+  text-decoration: none;
+  color: orange;
+}
+
+.signup {
+  display: inline;
+  margin-bottom: cpx;
+}
+
+.photos{
+  display:table-cell
+}
+
+.checkbox-container{
+  display:inline-table
+}
+
+.photos label:before {
+  content: url("https://cdn1.iconfinder.com/data/icons/windows8_icons_iconpharm/26/unchecked_checkbox.png");
+  position: absolute;
+  z-index: 100;
+}
+
+:checked + label:before {
+  content: url("https://cdn1.iconfinder.com/data/icons/windows8_icons_iconpharm/26/checked_checkbox.png");
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+/*pure cosmetics:*/
+label {
+  margin: 10px;
+}
+
+.photos > p {
+  text-align: start;
+  font-size: 16px;
+  padding: 0px;
+  margin-top: 8px;
+}
+
+img{
+  width: 70px;
+  height: 70px;
+}
